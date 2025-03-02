@@ -5,9 +5,13 @@ package aufgabe5
 // die nach den Domino-Regeln erlaubt wäre.
 // Bei einer solchen Kette muss immer die rechte Seite eines Steins
 // gleich der linken Seite des nächsten Steins sein.
-func IsChain(dominoes []Dominoe) bool {
+func IsChain(Dominoes []Dominoe) bool {
 
-	return dominoes[Dominoe.Right] == dominoes[Dominoe.Left]
+	if len(Dominoes) < 2 {
+		return true
+	}
+	return IsChain(Dominoes[1:]) && Dominoes[0].Right == Dominoes[1].Left
+
 }
 
 // Dominoe repräsentiert einen Domino-Stein mit zwei Zahlen.
